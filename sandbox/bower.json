@@ -1,0 +1,20 @@
+{
+  "name": "sudokuSolver",
+  "homepage": "https://github.com/MeihdiDjebli/sudokuSolver",
+  "authors": [
+    "Meihdi Djebli <meihdi.djebli@hotmail.fr>"
+  ],
+  "description": "A Sudoku Solver",
+  "main": "index.html",
+  "keywords": [
+    "Sudoku"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Sudoku Solver</title>
+        <link rel="stylesheet" type="text/css" href="public/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="public/css/sudoku.css">
+    </head>
+    <body class="bg-faded">
+        <div class="container-fluid sudoku-content">
+            <h1 class="text-xs-center">Sudoku Game</h1>
+            <div id="sudokuGrid" class="sudoku-container">
+                <div class="row">
+                    <div class="sudoku-box sudoku-row-1 sudoku-col-a"></div><div class="sudoku-box sudoku-row-1 sudoku-col-b"></div><div class="sudoku-box sudoku-row-1 sudoku-col-c"></div>
+                    <div class="sudoku-box sudoku-row-1 sudoku-col-d"></div><div class="sudoku-box sudoku-row-1 sudoku-col-e"></div><div class="sudoku-box sudoku-row-1 sudoku-col-f"></div>
+                    <div class="sudoku-box sudoku-row-1 sudoku-col-g"></div><div class="sudoku-box sudoku-row-1 sudoku-col-h"></div><div class="sudoku-box sudoku-row-1 sudoku-col-i"></div>
+                </div>
+
+                <div class="row">
+                    <div class="sudoku-box sudoku-row-2 sudoku-col-a"></div><div class="sudoku-box sudoku-row-2 sudoku-col-b"></div><div class="sudoku-box sudoku-row-2 sudoku-col-c"></div>
+                    <div class="sudoku-box sudoku-row-2 sudoku-col-d"></div><div class="sudoku-box sudoku-row-2 sudoku-col-e"></div><div class="sudoku-box sudoku-row-2 sudoku-col-f"></div>
+                    <div class="sudoku-box sudoku-row-2 sudoku-col-g"></div><div class="sudoku-box sudoku-row-2 sudoku-col-h"></div><div class="sudoku-box sudoku-row-2 sudoku-col-i"></div>
+                </div>
+
+                <div class="row">
+                    <div class="sudoku-box sudoku-row-3 sudoku-col-a"></div><div class="sudoku-box sudoku-row-3 sudoku-col-b"></div><div class="sudoku-box sudoku-row-3 sudoku-col-c"></div>
+                    <div class="sudoku-box sudoku-row-3 sudoku-col-d"></div><div class="sudoku-box sudoku-row-3 sudoku-col-e"></div><div class="sudoku-box sudoku-row-3 sudoku-col-f"></div>
+                    <div class="sudoku-box sudoku-row-3 sudoku-col-g"></div><div class="sudoku-box sudoku-row-3 sudoku-col-h"></div><div class="sudoku-box sudoku-row-3 sudoku-col-i"></div>
+                </div>
+
+                <div class="row">
+                    <div class="sudoku-box sudoku-row-4 sudoku-col-a"></div><div class="sudoku-box sudoku-row-4 sudoku-col-b"></div><div class="sudoku-box sudoku-row-4 sudoku-col-c"></div>
+                    <div class="sudoku-box sudoku-row-4 sudoku-col-d"></div><div class="sudoku-box sudoku-row-4 sudoku-col-e"></div><div class="sudoku-box sudoku-row-4 sudoku-col-f"></div>
+                    <div class="sudoku-box sudoku-row-4 sudoku-col-g"></div><div class="sudoku-box sudoku-row-4 sudoku-col-h"></div><div class="sudoku-box sudoku-row-4 sudoku-col-i"></div>
+                </div>
+
+                <div class="row">
+                    <div class="sudoku-box sudoku-row-5 sudoku-col-a"></div><div class="sudoku-box sudoku-row-5 sudoku-col-b"></div><div class="sudoku-box sudoku-row-5 sudoku-col-c"></div>
+                    <div class="sudoku-box sudoku-row-5 sudoku-col-d"></div><div class="sudoku-box sudoku-row-5 sudoku-col-e"></div><div class="sudoku-box sudoku-row-5 sudoku-col-f"></div>
+                    <div class="sudoku-box sudoku-row-5 sudoku-col-g"></div><div class="sudoku-box sudoku-row-5 sudoku-col-h"></div><div class="sudoku-box sudoku-row-5 sudoku-col-i"></div>
+                </div>
+
+                <div class="row">
+                    <div class="sudoku-box sudoku-row-6 sudoku-col-a"></div><div class="sudoku-box sudoku-row-6 sudoku-col-b"></div><div class="sudoku-box sudoku-row-6 sudoku-col-c"></div>
+                    <div class="sudoku-box sudoku-row-6 sudoku-col-d"></div><div class="sudoku-box sudoku-row-6 sudoku-col-e"></div><div class="sudoku-box sudoku-row-6 sudoku-col-f"></div>
+                    <div class="sudoku-box sudoku-row-6 sudoku-col-g"></div><div class="sudoku-box sudoku-row-6 sudoku-col-h"></div><div class="sudoku-box sudoku-row-6 sudoku-col-i"></div>
+                </div>
+
+                <div class="row">
+                    <div class="sudoku-box sudoku-row-7 sudoku-col-a"></div><div class="sudoku-box sudoku-row-7 sudoku-col-b"></div><div class="sudoku-box sudoku-row-7 sudoku-col-c"></div>
+                    <div class="sudoku-box sudoku-row-7 sudoku-col-d"></div><div class="sudoku-box sudoku-row-7 sudoku-col-e"></div><div class="sudoku-box sudoku-row-7 sudoku-col-f"></div>
+                    <div class="sudoku-box sudoku-row-7 sudoku-col-g"></div><div class="sudoku-box sudoku-row-7 sudoku-col-h"></div><div class="sudoku-box sudoku-row-7 sudoku-col-i"></div>
+                </div>
+
+                <div class="row">
+                    <div class="sudoku-box sudoku-row-8 sudoku-col-a"></div><div class="sudoku-box sudoku-row-8 sudoku-col-b"></div><div class="sudoku-box sudoku-row-8 sudoku-col-c"></div>
+                    <div class="sudoku-box sudoku-row-8 sudoku-col-d"></div><div class="sudoku-box sudoku-row-8 sudoku-col-e"></div><div class="sudoku-box sudoku-row-8 sudoku-col-f"></div>
+                    <div class="sudoku-box sudoku-row-8 sudoku-col-g"></div><div class="sudoku-box sudoku-row-8 sudoku-col-h"></div><div class="sudoku-box sudoku-row-8 sudoku-col-i"></div>
+                </div>
+
+                <div class="row">
+                    <div class="sudoku-box sudoku-row-9 sudoku-col-a"></div><div class="sudoku-box sudoku-row-9 sudoku-col-b"></div><div class="sudoku-box sudoku-row-9 sudoku-col-c"></div>
+                    <div class="sudoku-box sudoku-row-9 sudoku-col-d"></div><div class="sudoku-box sudoku-row-9 sudoku-col-e"></div><div class="sudoku-box sudoku-row-9 sudoku-col-f"></div>
+                    <div class="sudoku-box sudoku-row-9 sudoku-col-g"></div><div class="sudoku-box sudoku-row-9 sudoku-col-h"></div><div class="sudoku-box sudoku-row-9 sudoku-col-i"></div>
+                </div>
+            </div>
+            <div class="text-xs-center">
+                <button id="newGame" class="btn btn-success">New game</button>
+                <button id="solveIt" class="btn btn-primary" disabled="disabled">Solve it !</button>
+                <button id="helpMe" class="btn btn-outline-danger" disabled="disabled">Help me !</button>
+                <button id="reset" class="btn btn-outline-secondary" disabled="disabled">Reset</button>
+            </div>
+        </div>
+
+        <script src="public/js/jquery.js"></script>
+        <script src="../lib/solver.js"></script>
+        <script>
+            var sudokuFixtures = {
+                0: [ // Easy
+                    5, 3, 0, 0, 7, 0, 0, 0, 0,
+                    6, 0, 0, 1, 9, 5, 0, 0, 0,
+                    0, 9, 8, 0, 0, 0, 0, 6, 0,
+                    8, 0, 0, 0, 6, 0, 0, 0, 3,
+                    4, 0, 0, 8, 0, 3, 0, 0, 1,
+                    7, 0, 0, 0, 2, 0, 0, 0, 6,
+                    0, 6, 0, 0, 0, 0, 2, 8, 0,
+                    0, 0, 0, 4, 1, 9, 0, 0, 5,
+                    0, 0, 0, 0, 8, 0, 0, 7, 9
+                ],
+                1: [
+                    0, 7, 6, 0, 1, 0, 0, 4, 3,
+                    0, 0, 0, 7, 0, 2, 9, 0, 0,
+                    0, 9, 0, 0, 0, 6, 0, 0, 0,
+                    0, 0, 0, 0, 6, 3, 2, 0, 4,
+                    4, 6, 0, 0, 0, 0, 0, 1, 9,
+                    1, 0, 5, 4, 2, 0, 0, 0, 0,
+                    0, 0, 0, 2, 0, 0, 0, 9, 0,
+                    0, 0, 4, 8, 0, 7, 0, 0, 1,
+                    9, 1, 0, 0, 5, 0, 7, 2, 0
+                ],
+                2: [
+                    1, 0, 0, 0, 3, 0, 5, 9, 0,
+                    3, 0, 0, 5, 0, 0, 0, 2, 0,
+                    0, 5, 0, 9, 0, 2, 6, 3, 8,
+                    4, 3, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 6, 0, 1, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 8, 7,
+                    6, 4, 7, 3, 0, 8, 0, 5, 0,
+                    0, 1, 0, 0, 0, 5, 0, 0, 9,
+                    0, 9, 2, 0, 7, 0, 0, 0, 3
+                ],
+                3: [ // Medium
+                    0, 0, 0, 0, 0, 0, 0, 5, 0,
+                    1, 0, 8, 0, 0, 2, 0, 0, 0,
+                    5, 0, 0, 7, 0, 0, 3, 0, 0,
+                    0, 0, 2, 0, 4, 3, 0, 0, 0,
+                    0, 4, 0, 0, 8, 0, 0, 7, 0,
+                    0, 0, 0, 0, 0, 0, 5, 0, 0,
+                    0, 0, 0, 2, 0, 4, 8, 0, 0,
+                    0, 8, 0, 5, 0, 0, 4, 6, 0,
+                    0, 6, 4, 0, 0, 0, 0, 3, 0
+                ],
+                4: [ // hard
+                    0, 0, 0, 0, 8, 0, 0, 0, 0,
+                    0, 0, 1, 0, 2, 5, 3, 0, 8,
+                    9, 0, 4, 1, 0, 0, 0, 0, 0,
+                    0, 2, 9, 0, 4, 0, 0, 0, 0,
+                    1, 0, 0, 0, 0, 0, 0, 0, 3,
+                    0, 0, 0, 0, 5, 0, 9, 6, 0,
+                    0, 0, 0, 0, 0, 8, 2, 0, 5,
+                    7, 0, 6, 3, 1, 0, 4, 0, 0,
+                    0, 0, 0, 0, 7, 0, 0, 0, 0
+                ],
+                5: [ // very hard
+                    8, 0, 1, 0, 2, 0, 0, 0, 0,
+                    0, 5, 0, 0, 0, 9, 0, 0, 0,
+                    2, 3, 0, 5, 0, 1, 0, 0, 0,
+                    0, 0, 5, 0, 0, 7, 0, 6, 0,
+                    0, 4, 0, 0, 0, 0, 0, 2, 0,
+                    0, 1, 0, 3, 0, 0, 5, 0, 0,
+                    0, 0, 0, 7, 0, 5, 0, 9, 3,
+                    0, 0, 0, 9, 0, 0, 0, 4, 0,
+                    0, 0, 0, 0, 4, 0, 1, 0, 8
+                ]
+            };
+
+            var sudokuSolver = solver.default;
+            var currentGame = -1;
+            var currentBoxHtml = null;
+            var currentGrid = null;
+
+            function populateHtmlGrid(grid) {
+                for (var i=0; i<grid.boxes.length; i++) {
+                    var box = grid.boxes[i];
+                    var selector = '.sudoku-col-' + box.colRef.toLowerCase() + '.sudoku-row-' + box.rowRef;
+                    var boxHtml = $(selector);
+
+                    if (box.value > 0) {
+                        if ($(boxHtml).hasClass('sudoku-box-empty')) {
+                            if (box.value == $(boxHtml).text())
+                                $(boxHtml).addClass('text-success');
+                            else
+                                $(boxHtml).addClass('text-danger');
+                        }
+                        $(selector).text(box.value);
+                    }
+                    else {
+                        $(boxHtml)
+                            .addClass('sudoku-box-empty')
+                            .text("");
+                    }
+                }
+
+                currentBoxHtml = null;
+
+                $('.sudoku-box-empty')
+                    .unbind("click")
+                    .removeClass('sudoku-box-edit')
+                    .click(function () {
+                        $('.sudoku-box').removeClass('sudoku-box-edit');
+                        $(this).addClass('sudoku-box-edit');
+                        currentBoxHtml = $(this);
+                    });
+            }
+
+            function resetBoxesClassNames() {
+                $('.sudoku-box')
+                    .removeClass('sudoku-box-edit')
+                    .removeClass('text-success')
+                    .removeClass('text-danger')
+                    .removeClass('sudoku-box-empty');
+            }
+
+
+            $(document).ready(function () {
+                $('#newGame').click(function () {
+                    resetBoxesClassNames();
+
+                    currentGame = (currentGame + 1) % Object.keys(sudokuFixtures).length;
+
+                    currentGrid = sudokuSolver.createGrid(sudokuFixtures[currentGame]);
+                    populateHtmlGrid(currentGrid);
+
+                    $('button').attr('disabled', false);
+                });
+
+                $('#reset').click(function () {
+                    resetBoxesClassNames();
+
+                    currentGrid = sudokuSolver.createGrid(sudokuFixtures[currentGame]);
+                    populateHtmlGrid(currentGrid);
+                });
+
+                $('#solveIt').click(function () {
+                    currentGrid = sudokuSolver.solveGrid(currentGrid);
+                    populateHtmlGrid(currentGrid);
+                });
+
+                $('#helpMe').click(function () {
+                    var boxesOrderedByScoreDesc = sudokuSolver.findAllBoxesGridOrderedByScoreDesc(currentGrid);
+
+                    for (var i=0;i<boxesOrderedByScoreDesc.length;i++) {
+                        var box = boxesOrderedByScoreDesc[i];
+                        if (box.value == 0) {
+                            var value = sudokuSolver.solveBox(currentGrid, box);
+
+                            if (value > 0) {
+                                box.value = value;
+                                var selector = '.sudoku-col-' + box.colRef.toLowerCase() + '.sudoku-row-' + box.rowRef;
+
+                                $(selector)
+                                    .addClass('text-danger')
+                                    .click()
+                                    .text(value);
+
+                                break;
+                            }
+                        }
+                    }
+                });
+
+                $(document).keypress(function (e) {
+                    if (e.which > 47 && e.which < 58) {
+                        if (currentBoxHtml) {
+                            $(currentBoxHtml).text(e.key);
+                        }
+                    }
+                    else if (e.which == 13) {
+                        $('.sudoku-box').removeClass('sudoku-box-edit');
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
